@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">
+        <div class="blog-stripe">
+          <% if @post.image.present? %>
+            <a href="#">
+                <img src="<%= @post.image %>" alt="" class="feature">
+            </a>
+          <% else %>
+            <%= image_tag("nill.png", class: "feature" ) %>
+            <p><%= @post.picktext %></p>
+          <% end %>
+          <div class="block-title">
+              <h3 class="text-center"><%=link_to @post.title, @post.image_url %></h3>
+              <p class="author text-center"><%= fa_icon "inbox" %>
+              <%= @post.date %></p>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="container"> 
+  <div class="row">
+    <div class="col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">
+  <!-- ここからフォーム -->
+  <% if current_user %>
+  <h4>＜コメント入力＞</h4>
+    <%= form_tag("/posts/#{@post.id}/comments", method: :post) do %>
+      <textarea style="width: 100%; margin-top: 15px;" cols="30" name="text" placeholder="コメントする" rows="2"></textarea>
+      <input type="submit" value="SENT" class="btn btn-info btn-block">
+    <% end %>
+  <% end %>
+
+  <!-- ここから追記してください -->
+  <% if current_user %>
+    <div class="comments">   
+      <h4>＜コメント一覧＞</h4>
+      <% if @comments %> 
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <%= comment.text %>
+          </p>
+      <% end %>
+      <% end %>
+    </div>
+    <% end %>
+    </div>
+  </div>
+</div>

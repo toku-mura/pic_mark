@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-12 col-lg-offset-0">
+      <% @posts.each do |post| %>
+          <div class="col-md-6 col-lg-6">
+              <ul class="all-blogs">
+                  <li class="media">
+                    <% if post.image.present? %>
+                      <a class="pull-left" href="/posts/<%= post.id %>">
+                          <img src="<%= post.image %>" alt="..." style="width:180px;">
+                      </a>
+                    <% else %>
+                    <a class="pull-left" href="/posts/<%= post.id %>">
+                      <%= image_tag("nill.png", :width => "180px" ) %>
+                    </a>
+                    <% end %>
+                      <div class="media-body">
+                          <h4 class="media-heading"><%= truncate(post.title, length: 50)%></h4>
+                          <p class="author"><%= post.date %></p>
+                          <%= fa_icon "inbox" %>
+                          <%=link_to "PIC", post_path(post.id) %>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+        <% end %>
+        <%= paginate(@posts) %>
+    </div>
+  
+  </div>
+</div>

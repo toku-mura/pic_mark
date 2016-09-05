@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-lg-offset-0">
+
+      <div class="col-md-10 col-lg-10">
+          <ul class="all-blogs">
+              
+
+                <% if current_user %> 
+
+                    <% if @comments.present? %> 
+
+                      <% @comments.each do |comment| %>
+                      <li class="media">
+                      <div class="mypagi_imgbox">
+
+                        <% if comment.post.image.present? %>
+                          <a class="pull-left" href="/posts/<%= comment.post.id %>">
+                              <img src="<%= comment.post.image %>" alt="..." style="width:180px;">
+                          </a>
+                        <% else %>
+                        <a class="pull-left" href="/posts/<%= comment.post.id %>">
+                          <%= image_tag("nill.png", :width => "180px" ) %>
+                        </a>
+                        <% end %>
+
+                      </div>
+                      <div class="media-body" >
+                        <h4 class="media-heading"><%= truncate(comment.post.title, length: 30)%></h4>
+                        <p class="author"><%= comment.post.date %></p>
+                        <%= fa_icon "inbox" %>
+                            <%=link_to "本文", comment.post.image_url %>
+                        <h5>＜コメント＞</h5>
+                        <p>
+                          <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+                          <%= comment.text %>
+
+                          <% if comment.user_id == current_user.id %>
+                           <%= link_to "削除", comment_path(comment.id), method: :delete %>
+                          <% end %>
+
+                        </p>
+                      </div>
+                      </li>
+                      <% end %>
+                    <% else %>
+                      <div class="user_page_box col-md-8 col-md-offset-2"><h3>ようこそ P I C M A R K S へ</h3>
+                      <p>PICMARKはお気に入りの記事に自分のコメントを記録して、記事に対する考えや気づきを記録するサービスです。<br>他の人のコメントも見ることができます。</p>
+                      <%= link_to "記事を読む", root_path, class: "btn btn-info" %>
+                      </div>
+                    <% end %>
+
+                <% end %>
+
+          </ul>
+      </div>
+    
+    </div>
+  </div>
+</div>
