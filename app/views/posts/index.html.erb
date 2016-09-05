@@ -6,7 +6,7 @@
     <% unless user_signed_in? %>
     <h1 class="text-primary text-center">ようこそ P I C M A R K S へ</h1>
       <p class="text-center">PICMARKはお気に入りの記事に自分のコメントを記録して、記事に対する考えや気づきを記録するサービスです。<br>他の人のコメントも見ることができます!</p>
-      <%= link_to "新規会員登録", root_path, class: "btn btn-danger center-block text-center", style: "width: 40%" %>
+      <%= link_to "新規会員登録", new_user_registration_path, class: "btn btn-danger center-block text-center", style: "width: 40%" %>
       <% end %>
       </div>
       <% @posts.each do |post| %>
