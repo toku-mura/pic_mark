@@ -54,6 +54,7 @@ gem "bootstrap-sass"
 gem "font-awesome-rails"
 gem 'kaminari'
 gem 'devise'
+gem 'therubyracer'
 
 group :production, :staging do
   gem 'rails_12factor'
