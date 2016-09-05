@@ -2,6 +2,10 @@
   <div class="row">
 
     <div class="col-lg-12 col-lg-offset-0">
+    <div class="col-lg-8 col-lg-offset-2" style="padding: 30px 0;">
+    <h1 class="text-primary text-center">ようこそ P I C M A R K S へ</h1>
+      <p class="text-center">PICMARKはお気に入りの記事に自分のコメントを記録して、記事に対する考えや気づきを記録するサービスです。<br>他の人のコメントも見ることができます!</p>
+      </div>
       <% @posts.each do |post| %>
           <div class="col-md-6 col-lg-6">
               <ul class="all-blogs">
@@ -25,8 +29,12 @@
               </ul>
           </div>
         <% end %>
-        <%= paginate(@posts) %>
     </div>
-  <p>参照元：<%= link_to "http://b.hatena.ne.jp/", "http://b.hatena.ne.jp/" %></p>
+    <div>
+    <%= paginate(@posts) %>
+    </div>
+    <div>
+    <p>参照元：<%= link_to "http://b.hatena.ne.jp/", "http://b.hatena.ne.jp/" %></p>
+  </div>
   </div>
 </div>
