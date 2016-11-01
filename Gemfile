@@ -55,6 +55,7 @@ gem "font-awesome-rails"
 gem 'kaminari'
 gem 'devise'
 gem 'therubyracer'
+gem 'unicorn'
 
 group :production, :staging do
   gem 'rails_12factor'
