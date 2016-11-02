@@ -15,7 +15,7 @@ default: &default
   pool: 5
   username: root
   password:
-  socket: /tmp/mysql.sock
+  host: localhost
 
 development:
   <<: *default
@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: picmark_production
-  username: picmark
+  username: root
   password: <%= ENV['PICMARK_DATABASE_PASSWORD'] %>
